@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import testLogo from './../../static/Group1logo.svg';
 
 var cardStyle = {
@@ -17,13 +18,19 @@ class AcademyLoginPage extends React.Component {
       <div className="card container d-flex text-vertical" style={cardStyle}>
         <img className="card-img-top " src={testLogo} alt="Card logo"></img>
         <div className="card-body">
-        <h5 className="card-title text-center">Login</h5>
-        <p className="card-text text-center">What's your coaching's name?</p>
-        <span className=" form-group row">
-        <span>
-          <input type="text" className="text-right" placeholder="vibrant"  aria-describedby="basic-addon1"/>.coachboard.com</span>
-        </span>
-        <div className="text-center"><button type="button" style={nextButton}>Next</button></div>
+          <h5 className="card-title text-center">Login</h5>
+          <p className="card-text text-center">What's your coaching's name?</p>
+          <span className=" form-group row">
+          <span>
+            <input type="text" className="text-right" 
+              placeholder="vibrant"  aria-describedby="basic-addon1"/>
+            .coachboard.com</span>
+          </span>
+          <div className="text-center">
+              <Link to='/academy'>
+                <button type="button" style={nextButton}>Next</button>
+              </Link>
+          </div>
         </div>
       </div>
     )

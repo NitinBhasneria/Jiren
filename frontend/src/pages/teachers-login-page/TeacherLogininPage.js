@@ -12,6 +12,18 @@ var nextButton={
 }
 
 class TeacherLoginPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      password:''
+    }
+    this.updateState = this.updateState.bind(this);
+  };
+
+  updateState(e) {
+    this.setState({data: e.target.value});
+ }
   render() {
     return (
       <div className="card container d-flex text-vertical" style={cardStyle}>
@@ -21,11 +33,17 @@ class TeacherLoginPage extends React.Component {
         <form>
           <div className=" form-group">
             <label>Username</label>
-            <input type="text"  className="form-control" placeholder="Username"/>
+            <input type="text"  className="form-control"
+              placeholder="Username"
+              value = {this.state.username} 
+              onChange = {this.updateState}/>
           </div>
           <div className=" form-group">
             <label>Password</label>
-            <input type="password" className="form-control" placeholder="password"/>
+            <input type="password" className="form-control"
+              placeholder="password"
+              value = {this.state.password} 
+              onChange = {this.updateState}/>
           </div>
         </form>
         <div className="text-center"><button type="button" style={nextButton}>Next</button></div>

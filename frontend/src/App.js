@@ -2,7 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 
 import './App.css';
-import './Router';
+import ParentRouter from './Router';
 
 function App() {
   return (

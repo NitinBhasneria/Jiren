@@ -11,11 +11,9 @@ import TeacherLoginPage from './pages/teachers-login-page/TeacherLogininPage.js'
 class ParentRouter extends React.Component {
   render(){
     return (
-      <Router history = {browserHistory}>
-      <Route path = "/" component = {App}>
-         <IndexRoute component = {AcademyLoginPage} />
-         <Route path = "/academy" component = {TeacherLoginPage} />
-      </Route>
+    <Router>
+      <Route exact path = "/" component = {AcademyLoginPage}/>
+      <Route path = "/academy" component = {TeacherLoginPage} />
    </Router>
     );
   }
