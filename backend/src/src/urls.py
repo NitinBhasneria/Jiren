@@ -19,4 +19,5 @@ from django.conf.urls import url, include
 urlpatterns = [
     url('admin/', admin.site.urls),
     url('users/', include('accounts.url')),
+    url('api/', include('coachroom.urls'))
 ]

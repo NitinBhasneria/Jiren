@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import testLogo from './../../static/Group1logo.svg';
+import testLogo from './../../static/images/Group1logo.svg';
 
 var cardStyle = {
   border:'1px solid black',
@@ -13,6 +13,19 @@ var nextButton={
 }
 
 class AcademyLoginPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      academyName: ''
+    }
+    this.updateState = this.updateState.bind(this);
+  };
+
+  updateState(e) {
+    this.setState({academyName: e.target.value});
+    console.log(this.state.academyName)
+ }
+
   render() {
     return (
       <div className="card container d-flex text-vertical" style={cardStyle}>
@@ -23,11 +36,18 @@ class AcademyLoginPage extends React.Component {
           <span className=" form-group row">
           <span>
             <input type="text" className="text-right" 
-              placeholder="vibrant"  aria-describedby="basic-addon1"/>
+              placeholder = "name"  aria-describedby="basic-addon1"
+              value = {this.state.academyName}
+              onChange = {this.updateState}/>
             .coachboard.com</span>
           </span>
           <div className="text-center">
-              <Link to='/academy'>
+              <Link to={{
+                pathname : '/academy',
+                state: {
+                  academyName : 'Vibrant'
+                }
+              }}>
                 <button type="button" style={nextButton}>Next</button>
               </Link>
           </div>
