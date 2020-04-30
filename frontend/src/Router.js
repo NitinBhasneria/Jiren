@@ -1,22 +1,39 @@
-import {
-  BrowserRouter as Router,
-  Route,
-} from "react-router-dom";
+//packages import 
 import React from 'react'
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import reduxThunk from 'redux-thunk';
 
-import AcademyLoginPage from "./pages/academy-login-page/AcademyLoginPage";
-import TeacherLoginPage from './pages/teachers-login-page/TeacherLogininPage.js'
+// files import 
+import { loadUser } from './actions/auth';
+import history from  './history';
+import rootReducer from './reducers';
+import OrganisationLoginPage from "./pages/academy-login-page/AcademyLoginPage";
+import MembersLoginPage from './pages/members-login-page/MemberLogininPage.js';
 
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(reduxThunk))
+);
 
 class ParentRouter extends React.Component {
+  componentDidMount() {
+    // store.dispatch(loadUser());
+  }
   render(){
     return (
-    <Router>
-      <Route exact path = "/" component = {AcademyLoginPage}/>
-      <Route path = "/academy" component = {TeacherLoginPage} />
-   </Router>
+    <Provider store={store}>
+      <Router history={history}>
+      <Switch>
+        {/* <PrivateRoute exact path='/' component={Dashboard} /> */}
+        <Route exact path = "/" component = {OrganisationLoginPage}/>
+        <Route path = "/academy" component = {MembersLoginPage} />
+      </Switch>
+      </Router>
+    </Provider>
     );
   }
-}
-
+} 
 export default ParentRouter;

@@ -1,6 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { browserHistory } from 'react-router'
+
 import testLogo from './../../static/images/Group1logo.svg';
+import { loadOrganisation } from './../../actions/organisationAction';
+import { connect } from "react-redux";
 
 var cardStyle = {
   border:'1px solid black',
@@ -12,20 +16,27 @@ var nextButton={
   textAlign:'center'
 }
 
-class AcademyLoginPage extends React.Component {
+class OrganisationLoginPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       academyName: ''
     }
     this.updateState = this.updateState.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   };
 
   updateState(e) {
     this.setState({academyName: e.target.value});
-    console.log(this.state.academyName)
- }
+  }
+  onSubmit(){
+    console.log("clicked");
+    // if(this.props.loadOrganisation(this.state.academyName)){
+    //   return (<Redirect to='/academy' ></Redirect>) 
 
+    // }
+    this.props.history.push("/academy");
+  }
   render() {
     return (
       <div className="card container d-flex text-vertical" style={cardStyle}>
@@ -42,14 +53,11 @@ class AcademyLoginPage extends React.Component {
             .coachboard.com</span>
           </span>
           <div className="text-center">
-              <Link to={{
-                pathname : '/academy',
-                state: {
-                  academyName : 'Vibrant'
-                }
-              }}>
-                <button type="button" style={nextButton}>Next</button>
-              </Link>
+            <button type="button"
+              style={nextButton} 
+              onClick={this.onSubmit}>
+            Next
+            </button>
           </div>
         </div>
       </div>
@@ -57,4 +65,12 @@ class AcademyLoginPage extends React.Component {
   }
 }
 
-export default AcademyLoginPage;
+const mapStateToProps = state => ({
+  organisation : state.organisation.organisation
+})
+OrganisationLoginPage = connect(
+  mapStateToProps,
+  { loadOrganisation }
+)(OrganisationLoginPage);
+
+export default OrganisationLoginPage;
