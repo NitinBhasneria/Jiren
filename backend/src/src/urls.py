@@ -15,9 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.conf.urls import url, include
-
 urlpatterns = [
     url('admin/', admin.site.urls),
     url('api/', include('accounts.url')),
-    url('api/', include('coachroom.urls'))
+    url('coachroom/', include('coachroom.urls'))
 ]

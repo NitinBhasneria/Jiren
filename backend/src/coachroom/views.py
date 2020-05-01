@@ -13,7 +13,7 @@ class OrganisationDetail(APIView):
     def get_object(self, pk):
         try:
             return Organisation.objects.get(pk=pk)
-        except Organisations.DoesNotExist:
+        except Organisation.DoesNotExist:
             raise Http404
 
     def get(self, request, pk, format=None):
