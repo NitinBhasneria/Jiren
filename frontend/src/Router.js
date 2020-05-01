@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import reduxThunk from 'redux-thunk';
+import DasdBoard from './components/dashboard';
 
 // files import 
 import { loadUser } from './actions/auth';
@@ -30,6 +31,7 @@ class ParentRouter extends React.Component {
         {/* <PrivateRoute exact path='/' component={Dashboard} /> */}
         <Route exact path = "/" component = {OrganisationLoginPage}/>
         <Route path = "/academy" component = {MembersLoginPage} />
+        <Route path = "/dashboard" component = {DasdBoard} />
       </Switch>
       </Router>
     </Provider>
