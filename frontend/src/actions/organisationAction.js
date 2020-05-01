@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { stopSubmit } from 'redux-form';
 
 import {
   ORGANISATION_LOADED,
@@ -7,11 +6,13 @@ import {
   ORGANISATION_LOADING
 } from './types';
 
+const API_URL = 'http://localhost:8000';
+
 // LOAD ORGANISATION DETAIL
 export const loadOrganisation = (name) => async (dispatch, getState) => {
   dispatch({ type: ORGANISATION_LOADING });
   try {
-    const res = await axios.get(`/academy/${name}`);
+    const res = await axios.get(`${API_URL}/api/organization/${name}/`);
     dispatch({
       type: ORGANISATION_LOADED,
       payload: res.data

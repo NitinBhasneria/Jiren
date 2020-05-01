@@ -27,7 +27,7 @@ SECRET_KEY = '3yfz+*6dgfub*h5do)=d^!vux-i7&a!n4z2hclegy(^!hwu*l!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.43.43','127.0.0.1']
+ALLOWED_HOSTS = ['192.168.43.43','127.0.0.1','localhost']
 
 
 # Application definition
@@ -97,7 +97,7 @@ WSGI_APPLICATION = 'src.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'coach_room_database'
+        'NAME': 'coachs_database'
     }
 }
 
@@ -139,3 +139,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:3000",
+]
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]

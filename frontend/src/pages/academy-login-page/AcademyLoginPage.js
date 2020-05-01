@@ -1,6 +1,4 @@
 import React from "react";
-import { Link, Redirect } from "react-router-dom";
-import { browserHistory } from 'react-router'
 
 import testLogo from './../../static/images/Group1logo.svg';
 import { loadOrganisation } from './../../actions/organisationAction';
@@ -31,11 +29,9 @@ class OrganisationLoginPage extends React.Component {
   }
   onSubmit(){
     console.log("clicked");
-    // if(this.props.loadOrganisation(this.state.academyName)){
-    //   return (<Redirect to='/academy' ></Redirect>) 
-
-    // }
-    this.props.history.push("/academy");
+    if(this.props.loadOrganisation(this.state.academyName)){
+      this.props.history.push("/academy");
+    }
   }
   render() {
     return (

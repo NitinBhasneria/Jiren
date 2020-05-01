@@ -1,5 +1,5 @@
 from django.contrib import admin
-from coachroom.models import Organisation, TeachersProfile, StudentsProfile, Batch, Lecture, Slot
+from coachroom.models import Organisation, TeachersProfile, Batch, StudentsProfile, Lecture, Slot
 # Register your models here.
 admin.site.register(Organisation)
 admin.site.register(TeachersProfile)

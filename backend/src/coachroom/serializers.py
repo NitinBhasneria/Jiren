@@ -6,7 +6,7 @@ class OrganizationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Organisation
-        fields = ('__all__')
+        fields = ['id', 'organisation_name', 'organisation_url', 'organisation_logo','organisation_color_palette']
 
 class LectureSerializers(serializers.ModelSerializer):
 

@@ -36,23 +36,9 @@ class MembersLoginPage extends React.Component {
     );
   };
 
-  onSubmit = formValues => {
+  onSubmit = formValues => {  
     this.props.login(formValues);
   };
-
-  componentDidMount(){
-    // this.getOrganisation();
-  }
-  
-
-  // getOrganisation(){
-  //   //const { organisationdetail } = this.props.location.state;
-  //   const organisationdetail = 'vibrant';
-  //   let url = UrlConstructor(constant.ORGANISATION_URL, `name=${organisationdetail}`);
-  //   return axios.get(url).then((response) => {
-  //     this.setState({organisation:response.data});
-  //   });
-  // }
 
   render() {
     if (this.props.isAuthenticated) {
